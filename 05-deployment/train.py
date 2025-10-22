@@ -3,6 +3,8 @@
 
 # import
 
+import pickle
+
 import pandas as pd
 import numpy as np
 
@@ -12,8 +14,6 @@ from sklearn.model_selection import KFold
 from sklearn.feature_extraction import DictVectorizer
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import roc_auc_score
-
-import pickle
 
 
 # parameters
@@ -91,9 +91,13 @@ def predict(df, dv, model):
 
 # validation
 
+print(f'Doing of validation with C={C}')
+
 kfold = KFold(n_splits=n_splits, shuffle=True, random_state=1)
 
 scores = []
+
+fold = 0
 
 for train_idx, val_idx in kfold.split(df_full_train):
     df_train = df_full_train.iloc[train_idx]
@@ -108,20 +112,29 @@ for train_idx, val_idx in kfold.split(df_full_train):
     auc = roc_auc_score(y_val, y_pred)
     scores.append(auc)
 
+    print(f'AUC on fold {fold} is {auc}')
+    fold += 1
+
+print('Validation results:')
 print('C=%s %.3f +- %.3f' % (C, np.mean(scores), np.std(scores)))
 
 
 # training of the final model
+
+print('Training of the final model')
 
 dv, model = train(df_full_train, df_full_train.churn.values, C=1.0)
 y_pred = predict(df_test, dv, model)
 
 y_test = df_test.churn.values
 auc = roc_auc_score(y_test, y_pred)
-auc
+
+print(f'AUC={auc}')
 
 
 # save the model
 
 with open(output_file, 'wb') as f_out:
     pickle.dump((dv, model), f_out)
+
+print(f'The model is saved to {output_file}')

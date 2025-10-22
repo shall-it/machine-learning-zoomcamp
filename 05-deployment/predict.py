@@ -1,4 +1,11 @@
 
+# import
+
+import pickle
+from flask import Flask
+from flask import request
+from flask import jsonify
+
 
 # parameters
 
@@ -10,36 +17,23 @@ model_file = 'model_C1.0.bin'
 with open(model_file, 'rb') as f_in:
     dv, model = pickle.load(f_in)
 
-dv, model
 
+app = Flask('churn')
 
-customer = {
-    'gender': 'female',
-    'seniorcitizen': 0,
-    'partner': 'yes',
-    'dependents': 'no',
-    'phoneservice': 'no',
-    'multiplelines': 'no_phone_service',
-    'internetservice': 'dsl',
-    'onlinesecurity': 'no',
-    'onlinebackup': 'yes',
-    'deviceprotection': 'no',
-    'techsupport': 'no',
-    'streamingtv': 'no',
-    'streamingmovies': 'no',
-    'contract': 'month-to-month',
-    'paperlessbilling': 'yes',
-    'paymentmethod': 'electronic_check',
-    'tenure': 1,
-    'monthlycharges': 29.85,
-    'totalcharges': 29.85
-}
+@app.route('/predict', methods = ['GET'])
+def predict():
+    customer = request.get_json()
+    X = dv.transform([customer])
+    y_pred = model.predict_proba(X)[0, 1]
 
+    churn = y_pred >= 0.5
 
+    result = {
+        'churn_probability': y_pred,
+        'churn': churn
+    }
 
-X = dv.transform([customer])
+    return jsonify(result)
 
-y_pred = model.predict_proba(X)[0, 1]
-
-print('input:', customer)
-print('output:', y_pred)
+if __name__ == "__main__":
+    app.run(debug=True, host='0.0.0.0', port=9696)
