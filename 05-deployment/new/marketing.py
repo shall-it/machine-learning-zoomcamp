@@ -16,6 +16,7 @@ customer = {
     "deviceprotection": "no",
     "techsupport": "no",
     "streamingtv": "no",
+    # "streamingtv": "maybe",
     "streamingmovies": "no",
     "contract": "month-to-month",
     "paperlessbilling": "yes",
@@ -23,7 +24,7 @@ customer = {
     "tenure": 6,
     "monthlycharges": 29.85,
     "totalcharges": 129.85,
-    "whatever": 18178613
+    # "whatever": 18178613
 }
 
 response = requests.post(url, json=customer)
@@ -36,3 +37,6 @@ if churn['churn'] >= 0.5:
     print('Send promo email')
 else:
     print('Do not do anything')
+
+
+# uv run python marketing                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               .py
