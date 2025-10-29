@@ -19,4 +19,4 @@ else:
     print('Not converted')
 
 
-# uv run python marketing.py
+# uv run python scoring.py
