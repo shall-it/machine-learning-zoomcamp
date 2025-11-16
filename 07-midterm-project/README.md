@@ -19,7 +19,7 @@ Installation
 To have all required packages for Midterm project you need to:
 1. Install conda
 2. Activate conda to dedicate the environment for specific project: conda activate base
-3. Install required packages: pip install pandas numpy sklearn pickle fastapi uvicorn uv requests
+3. Install required common packages: pip install pandas numpy scikit-learn pickle fastapi uvicorn uv requests
 When you get a fresh copy of a project that already uses uv, you can install all the dependencies using the sync command: uv sync
 
 
@@ -72,4 +72,6 @@ aws apprunner create-service \
 
 Health of application can be checked just from any browser by URL: https://v2y3g8qkz5.eu-central-1.awsapprunner.com/health
 
-Use risk_cloud.py script to get the prediction from model deployed via AWS App Runner service: uv run python risk_cloud.py
+URL for getting the prediction: https://v2y3g8qkz5.eu-central-1.awsapprunner.com/predict
+
+Use risk_cloud.py Python script containing this URL to get the prediction from model deployed via AWS App Runner service: uv run python risk_cloud.py
