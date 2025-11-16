@@ -4,7 +4,7 @@
 
 import requests
 
-url = 'http://localhost:9696/predict'
+url = 'https://v2y3g8qkz5.eu-central-1.awsapprunner.com/predict'
 
 person = {
     "id": 5,
@@ -44,4 +44,4 @@ if risk['risk'] >= 0.5:
 else:
     print('Congratulations! Your digital and mental health are OK, risk is low')
 
-# uv run python risk.py
+# uv run python risk_cloud.py
