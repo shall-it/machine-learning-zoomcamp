@@ -9,6 +9,8 @@ from typing import Literal
 from pydantic import BaseModel, Field
 from pydantic import ConfigDict
 
+import xgboost as xgb
+
 
 class Person(BaseModel):
     model_config = ConfigDict(extra="forbid")
@@ -48,12 +50,16 @@ app = FastAPI(title="person-risk-prediction")
 
 
 with open ('model.bin', 'rb') as f_in:
-    pipeline = pickle.load(f_in)
+    # pipeline = pickle.load(f_in)
+    model, dv = pickle.load(f_in)
 
 
 def predict_single(person):
-    result = pipeline.predict_proba(person)[0, 1]
+    X = dv.transform([person])
+    dmatrix = xgb.DMatrix(X, feature_names=list(dv.get_feature_names_out()))
+    result = model.predict(dmatrix)[0]
     return float(result)
+
 
 
 @app.post("/predict")

@@ -127,20 +127,20 @@ def train_model_xgb(df):
 
     print('AUC is', auc)
 
-    return model
+    return model, dv
 
 
-def save_model(filename, model):
+def save_model(filename, model, dv):
     with open (filename, 'wb') as f_out:
-        pickle.dump(model, f_out)
+        pickle.dump((model, dv), f_out)
     print(f'Model was saved to {filename}')
 
 
 df = load_data()
 # pipeline = train_model(df)
 # save_model('model.bin', pipeline)
-model = train_model_xgb(df)
-save_model('model.bin', model)
+model, dv = train_model_xgb(df)
+save_model('model.bin', model, dv)
 
 with open ('model.bin', 'wb') as f_out:
-    pickle.dump(model, f_out)
+    pickle.dump((model, dv), f_out)
