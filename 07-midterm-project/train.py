@@ -125,7 +125,34 @@ def train_model_xgb(df):
     y_pred = model.predict(dval)
     auc = roc_auc_score(y_val, y_pred).round(3)
 
-    print('AUC is', auc)
+    print('Validation AUC is', auc)
+
+    df_full_train = df_full_train.reset_index(drop=True)
+
+    y_full_train = df_full_train.high_risk_flag.values
+
+    del df_full_train['high_risk_flag']
+
+    dv = DictVectorizer(sparse=False)
+
+    dicts_full_train = df_full_train.to_dict(orient='records')    
+    X_full_train = dv.fit_transform(dicts_full_train)
+
+    dicts_test = df_test.to_dict(orient='records')
+    X_test = dv.transform(dicts_test)
+
+    features = list(dv.get_feature_names_out())
+
+    dfulltrain = xgb.DMatrix(X_full_train, label=y_full_train, feature_names=features)
+
+    dtest = xgb.DMatrix(X_test, label=y_test, feature_names=features)
+
+    model = xgb.train(xgb_params, dfulltrain, num_boost_round=35)
+
+    y_pred = model.predict(dtest)
+    auc = roc_auc_score(y_test, y_pred).round(3)
+
+    print('Full Test AUC is', auc)
 
     return model, dv
 
@@ -141,6 +168,3 @@ df = load_data()
 # save_model('model.bin', pipeline)
 model, dv = train_model_xgb(df)
 save_model('model.bin', model, dv)
-
-with open ('model.bin', 'wb') as f_out:
-    pickle.dump((model, dv), f_out)

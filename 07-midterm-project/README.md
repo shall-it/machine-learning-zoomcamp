@@ -19,7 +19,7 @@ Installation
 To have all required packages for Midterm project you need to:
 1. Install conda
 2. Activate conda to dedicate the environment for specific project: conda activate base
-3. Install required common packages: pip install pandas numpy scikit-learn pickle fastapi uvicorn uv requests
+3. Install required common packages: python -m pip install pandas numpy scikit-learn pickle fastapi uvicorn uv requests
 When you get a fresh copy of a project that already uses uv, you can install all the dependencies using the sync command: uv sync
 
 
@@ -42,14 +42,18 @@ Dockerfile is applied for containerization of my local application to have an ab
 Use the next commands into Midterm repository to create Docker image and get the application up and running into Docker container locally:
 1. docker build -t predict-risk .
 2. docker run -it --rm -p 9696:9696 predict-risk
+With running Docker container use Python script risk.py as well to send JSON requests and receive the response with prediction:
+uv run python risk.py
 
 
 Cloud deployment
 
+Login with AWS IAM credentials like access key and secret key
 aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws
 aws ecr-public create-repository --repository-name predict-risk --region us-east-1
 
 docker tag predict-risk:latest public.ecr.aws/x2b3b0k6/predict-risk:latest
+docker images
 docker push public.ecr.aws/x2b3b0k6/predict-risk:latest
 
 aws apprunner create-service \
