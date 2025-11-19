@@ -1,6 +1,26 @@
 # Midterm Project
 
+## Application usage
+
+Presented application has the basic level and can be used to solve the problems in the next areas: 
+
+**Mental Health Prediction**
+
+Build and evaluate classification models to identify individuals at elevated mental health risk based on digital behavior.
+
+**Behavioral Analytics**
+
+Study how technology usage influences mood, focus, and overall life balance.
+
+**Digital Wellness Design**
+
+Develop evidence-based interventions to encourage mindful digital habits and improve wellbeing outcomes.
+
+The Midterm project solution focuses primarily on predicting mental health risk from digital behavior.
+
 ## Dataset
+
+This dataset examines how digital lifestyles influence mental health outcomes — including anxiety, depression, stress, happiness, and productivity. It includes records from 3,500 participants across diverse backgrounds, capturing different levels of digital engagement and lifestyle balance. With 24 research-inspired features this dataset provides a robust foundation for building predictive models, correlation analyses and AI-driven wellbeing insights.
 
 Working dataset Digital Lifecycle Benchmark is free and accessible via Kaggle: https://www.kaggle.com/datasets/tarekmasryo/digital-health-and-mental-wellness
 
@@ -17,6 +37,50 @@ mv Data.csv digital-lifestyle.csv
 
 Commit and push this csv-file to GitHub MLZoomcamp repository to have public link for Jupyter notebook and train.py script like this:
 https://raw.githubusercontent.com/shall-it/machine-learning-zoomcamp/refs/heads/main/07-midterm-project/digital-lifestyle.csv
+
+### Key Feature Groups
+
+Demographic Information
+Age, Gender, Region, Income Level, Education Level
+
+Digital Behavior
+Daily Screen Time, Phone Unlocks, Notifications, Social Media Hours, and Study Time
+
+Mental Health Indicators
+Anxiety, Depression, Stress, Happiness, and Focus Scores
+
+Risk Indicator
+A High-Risk Flag summarizing digital wellbeing patterns and identifying individuals with potential mental health vulnerability.
+
+### Dataset Design & Target Definition
+
+This dataset was carefully modeled using patterns derived from digital wellbeing and psychology research.
+Each variable was generated through realistic statistical relationships to mirror trends observed in empirical studies.
+
+Feature Design:
+Behavioral attributes (screen time, social media use, notifications, etc.) are correlated with psychological measures (stress, focus, happiness) to create meaningful multidimensional relationships.
+
+Target Variable — high_risk_flag:
+Defined through a multi-factor wellbeing score combining digital intensity and emotional indicators.
+Participants with high screen time, low focus, and elevated stress/anxiety levels are classified as High Risk (1), while others are Low Risk (0).
+
+Class Balance:
+Maintains a realistic population variance, with approximately 15–20% high-risk participants, reflecting observed prevalence in mental health research.
+
+This framework enables experimentation with machine learning models, feature interpretability, and wellbeing analytics, while maintaining alignment with real-world behavioral science findings.
+
+### Summary Statistics
+
+The following table summarizes the dataset's structure and intended purpose:
+
+| Metric | Value |
+|--------|-------|
+| Rows | 3,500 |
+| Columns | 24 |
+| Target | high_risk_flag |
+| Intended Use | Research · Education · Applied Machine Learning |
+
+This dataset bridges the domains of behavioral science and artificial intelligence, offering a realistic foundation for exploring how technology use affects mental health.
 
 ## Installation
 
@@ -61,20 +125,22 @@ uv run python risk.py
 
 ## Cloud deployment
 
-Login with AWS IAM credentials like access key and secret key:
+Login with AWS IAM credentials like access key and secret key first.
+
+Then execute the next commands:
 ```bash
 aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws
 aws ecr-public create-repository --repository-name predict-risk --region us-east-1
 ```
 
-Tag and push Docker image:
+Tag, check and push Docker image to AWS Public ECR:
 ```bash
 docker tag predict-risk:latest public.ecr.aws/x2b3b0k6/predict-risk:latest
 docker images
 docker push public.ecr.aws/x2b3b0k6/predict-risk:latest
 ```
 
-Create AWS App Runner service:
+Create AWS App Runner service with image specification:
 ```bash
 aws apprunner create-service \
   --service-name predict-risk \
