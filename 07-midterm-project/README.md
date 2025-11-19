@@ -1,6 +1,6 @@
-# Midterm Project
+# Midterm Project - Digital lifestyle
 
-## Application usage
+## Digital lifestyle app usage
 
 Presented application has the basic level and can be used to solve the problems in the next areas: 
 
@@ -18,7 +18,7 @@ Develop evidence-based interventions to encourage mindful digital habits and imp
 
 The Midterm project solution focuses primarily on predicting mental health risk from digital behavior.
 
-## Dataset
+## Dataset for Digital lifestyle app
 
 This dataset examines how digital lifestyles influence mental health outcomes — including anxiety, depression, stress, happiness, and productivity. It includes records from 3,500 participants across diverse backgrounds, capturing different levels of digital engagement and lifestyle balance. With 24 research-inspired features this dataset provides a robust foundation for building predictive models, correlation analyses and AI-driven wellbeing insights.
 
@@ -163,7 +163,7 @@ aws apprunner create-service \
 
 Health of application can be checked just from any browser by URL: https://v2y3g8qkz5.eu-central-1.awsapprunner.com/health
 
-URL for getting the prediction: https://v2y3g8qkz5.eu-central-1.awsapprunner.com/predict
+URL for getting the prediction from Digital lifestyle app: https://v2y3g8qkz5.eu-central-1.awsapprunner.com/predict
 
 Use `risk_cloud.py` Python script containing this URL to get the prediction from model deployed via AWS App Runner service:
 ```bash
