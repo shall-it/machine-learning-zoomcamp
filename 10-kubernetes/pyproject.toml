@@ -9,5 +9,6 @@ dependencies = [
     "keras-image-helper>=0.0.2",
     "numpy>=2.3.5",
     "onnxruntime>=1.23.2",
+    "requests>=2.32.5",
     "uvicorn>=0.38.0",
 ]
