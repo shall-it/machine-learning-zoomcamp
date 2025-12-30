@@ -7,9 +7,24 @@ Cancer prediction is based on classification of the Myeloblasts cells (AML indic
 
 The microscopic blood cell dataset for Cancer detection consists of high-resolution images essential for automated diagnostic systems. Each image captures detailed cellular morphology under standardized conditions, focusing on both normal and abnormal blood cells.
 
-### Attribution
+### License
+
+Dataset is uploaded under the Attribution 4.0 International (CC BY 4.0) license: https://creativecommons.org/licenses/by/4.0/
+The license allows to share and adapt the material without restrictions except Attribution and Provenance section which presented below.
+
+### Attribution and Provenance
+
 Dataset is created by author Sumith Singh Kothwal.
 Dataset URL: https://www.kaggle.com/datasets/sumithsingh/blood-cell-images-for-cancer-detection
+
+Sources:
+https://www.cancerimagingarchive.net/
+https://www.kaggle.com/code/youssefabdelghfar/blood-cell-cancer-using-cnn-and-efficientnetb3/input
+
+Collection Methodology
+The dataset merges high-quality blood cell images from The Cancer Imaging Archive (TCIA) and public datasets, specifically curated for leukemia detection research. Images were captured using Wright-Giemsa staining at 100x magnification with oil immersion, ensuring optimal visualization of cellular details. The dataset includes 5 key cell types: Basophils (with dark purple cytoplasmic granules), Erythroblasts (immature red blood cells), Monocytes (large agranulocytes with kidney-shaped nuclei), Myeloblasts (immature white blood cells indicating leukemia), and Segmented Neutrophils (mature granulocytes with segmented nuclei). All images undergo standardized preprocessing, maintaining centered cell positioning, RGB color profiles essential for morphological analysis, and consistent background normalization. This collection, distributed under CC BY-NC 4.0 license for non-commercial use, requires citation of both The Cancer Imaging Archive (TCIA) and Youssef Abdelghfar's original Kaggle dataset. It serves research, educational purposes, and development of automated leukemia detection systems.
+
+### Dataset usage
 
 Dataset is free and accessible via Kaggle:
 
@@ -19,10 +34,6 @@ Dataset is free and accessible via Kaggle:
 
 !unzip blood-cell-images-for-cancer-detection.zip -d "blood-cell-images-for-cancer-detection"
 ```
-
-### License
-Dataset is under the Attribution 4.0 International (CC BY 4.0) license: https://creativecommons.org/licenses/by/4.0/
-The license allows to share and adapt the material without restrictions except Attribution which was made above.
 
 ### Technical Specifications
 Resolution: 1024x1024 pixels minimum
@@ -59,10 +70,33 @@ Morphological abnormality detection
 The dataset's structured organization and comprehensive documentation support both research initiatives and clinical applications in blood cancer diagnostics.
 Its standardized format enables reliable machine learning model development for automated leukemia detection systems.
 
-This dataset consists of 5000 images (.jpg) where the distribution is 1000 per class
+This dataset consists of 5000 images (.jpg) where the distribution is 1000 per class.
+The main features of dataset are clean data and well documentation.
 
 
 
 
 ## Model training
+
+### Selecting of the best parameters for training process
+
+Selecting of learning_rate parameter:
 ![learning_rate](./images/learning_rate.jpg)
+
+Selecting of size_inner parameter:
+![size_inner](./images/size_inner.jpg)
+
+Selecting of droprate parameter:
+![droprate](./images/droprate.jpg)
+
+Resulting model training with the best parameters:
+![result_training](./images/result_training.jpg)
+
+### Model accuracy
+
+Validation accuracy for the trained model reached with tuning of parameters and augmentation is more than 98%.
+
+### Model single testing
+
+Testing of the model by the image from test part of dataset:
+![test_image](./images/test_image.jpg)
