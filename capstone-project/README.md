@@ -100,3 +100,28 @@ Validation accuracy for the trained model reached with tuning of parameters and 
 
 Testing of the model by the image from test part of dataset:
 ![test_image](./images/test_image.jpg)
+
+
+## Docker
+
+Check Docker service is up and running first.
+
+Build the Docker image:
+```bash
+docker build -t cancer-predictor .
+```
+
+Start Docker container to test application functionality:
+```bash
+docker run -it --rm -p 8080:8080 cancer-predictor
+```
+
+Use this link from any browser locally to check health status of application:
+```bash
+http://localhost:8080/health
+```
+
+Use this link from any browser locally to enter to the Swagger UI which allows execute POST request with the example URL of test image:
+```bash
+http://localhost:8080/docs
+```
