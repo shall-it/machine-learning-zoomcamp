@@ -78,27 +78,32 @@ The main features of dataset are clean data and well documentation.
 
 ## Model training
 
-### Selecting of the best parameters for training process
+Selecting of the best parameters for training process
 
-Selecting of learning_rate parameter:
+### Selecting of learning_rate parameter:
+
 ![learning_rate](./images/learning_rate.jpg)
 
-Selecting of size_inner parameter:
+### Selecting of size_inner parameter:
+
 ![size_inner](./images/size_inner.jpg)
 
-Selecting of droprate parameter:
+### Selecting of droprate parameter:
+
 ![droprate](./images/droprate.jpg)
 
-Resulting model training with the best parameters:
+### Resulting model training with the best parameters:
+
 ![result_training](./images/result_training.jpg)
 
-### Model accuracy
+## Model accuracy
 
 Validation accuracy for the trained model reached with tuning of parameters and augmentation is more than 98%.
 
-### Model single testing
+## Model single testing
 
-Testing of the model by the image from test part of dataset:
+### Testing of the model by the image from test part of dataset:
+
 ![test_image](./images/test_image.jpg)
 
 
