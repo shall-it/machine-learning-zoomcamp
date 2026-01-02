@@ -15,10 +15,13 @@ The license allows to share and adapt the material without restrictions except A
 ### Attribution and Provenance
 
 Dataset is created by author Sumith Singh Kothwal.
+
 Dataset URL: https://www.kaggle.com/datasets/sumithsingh/blood-cell-images-for-cancer-detection
 
 Sources:
+
 https://www.cancerimagingarchive.net/
+
 https://www.kaggle.com/code/youssefabdelghfar/blood-cell-cancer-using-cnn-and-efficientnetb3/input
 
 Collection Methodology
