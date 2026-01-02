@@ -36,36 +36,37 @@ Dataset is free and accessible via Kaggle:
 ```
 
 ### Technical Specifications
-Resolution: 1024x1024 pixels minimum
-Staining: Wright-Giemsa
-Magnification: 100x oil immersion (1000x total)
-Color: 24-bit RGB Multiple focal planes per sample
+- **Resolution**: 1024x1024 pixels minimum
+- **Staining**: Wright-Giemsa
+- **Magnification**: 100x oil immersion (1000x total)
+- **Color**: 24-bit RGB Multiple focal planes per sample
 
 ### Quality Measures
-Expert hematopathologist validation
-Standardized imaging conditions
-Multiple samples per cell type
-Detailed preparation documentation
-Complete technical metadata
+- Expert hematopathologist validation
+- Standardized imaging conditions
+- Multiple samples per cell type
+- Detailed preparation documentation
+- Complete technical metadata
 
 ### Clinical Applications
-Normal vs. abnormal cell differentiation Leukemia subtype identification
-Disease progression monitoring
-Early detection screening
-Treatment response assessment
+- Normal vs. abnormal cell differentiation
+- Leukemia subtype identification
+- Disease progression monitoring
+- Early detection screening
+- Treatment response assessment
 
 ### Image Annotations Include
-Nuclear patterns and contours
-Cytoplasmic features
-Nucleoli presence
-Cell measurements
-Abnormal inclusions/Auer rods
+- Nuclear patterns and contours
+- Cytoplasmic features
+- Nucleoli presence
+- Cell measurements
+- Abnormal inclusions/Auer rods
 
 ### Machine Learning Capabilities
-Automated cell classification
-Quantitative feature analysis
-Differential counting
-Morphological abnormality detection
+- Automated cell classification
+- Quantitative feature analysis
+- Differential counting
+- Morphological abnormality detection
 
 The dataset's structured organization and comprehensive documentation support both research initiatives and clinical applications in blood cancer diagnostics.
 Its standardized format enables reliable machine learning model development for automated leukemia detection systems.
