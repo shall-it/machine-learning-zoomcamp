@@ -1,6 +1,6 @@
 # Capstone Project - Blood cell detection for Cancer prediction
 
-This project provides you with the ability to build and deploy Cancer prediction application related on Blood cell detection.
+This project provides the ability to build and deploy Cancer prediction application related on Blood cell detection.
 Cancer prediction is based on classification of the Myeloblasts cells (AML indicators): high-level risk, 12-20 micrometers, round/oval, high nuclear-cytoplasm ratio, visible nucleoli and Erythroblast cells: middle-level risk with comparing of the rest classes of Normal cells: neutrophils, monocytes and basophils. 
 
 ## Dataset details
@@ -120,15 +120,14 @@ Validation accuracy for the trained model reached with tuning of parameters and 
 ### The resulting model had PyTorch format so was converted to universal ONNX format for convenience and easy deployment:
 ![onnx_conversion](./images/onnx_conversion.jpg)
 
-### Model is deployed with modern and powerful FastAPI framework since it's used and demonstrated into app.py script:
-[app.py](https://github.com/shall-it/machine-learning-zoomcamp/blob/main/capstone-project/app.py)
+Model is deployed with modern and powerful FastAPI framework since it's used and demonstrated into app.py script: [app.py](https://github.com/shall-it/machine-learning-zoomcamp/blob/main/capstone-project/app.py)
 
 ## Dependency and environment management
 
-### All environment dependencies with specific versions are collected and described by three important files from project root point:
-[.python-version](https://github.com/shall-it/machine-learning-zoomcamp/blob/main/capstone-project/.python-version)
-[pyproject.toml](https://github.com/shall-it/machine-learning-zoomcamp/blob/main/capstone-project/pyproject.toml)
-[uv.lock](https://github.com/shall-it/machine-learning-zoomcamp/blob/main/capstone-project/uv.lock)
+All environment dependencies with specific versions are collected and described by three important files from project root point:
+- [.python-version](https://github.com/shall-it/machine-learning-zoomcamp/blob/main/capstone-project/.python-version)
+- [pyproject.toml](https://github.com/shall-it/machine-learning-zoomcamp/blob/main/capstone-project/pyproject.toml)
+- [uv.lock](https://github.com/shall-it/machine-learning-zoomcamp/blob/main/capstone-project/uv.lock)
 
 Please ensure uv is installed first:
 ```bash
@@ -146,7 +145,7 @@ Then uv sync --locked command should be executed to setup of environment and ins
 ## Dockerization
 
 Check Docker service is up and running first:
-- For my case with Ubuntu WSL
+In case of Ubuntu WSL
 ```bash
 sudo service docker status
 ```
@@ -181,13 +180,13 @@ http://localhost:8080/health
 ```
 ![app_healthy](./images/app_healthy.jpg)
 
-Use this link from any browser locally to enter to the Swagger UI. Swagger UI is a tool which allows to demonstrate possible API calls with their types
+Use this link from any browser locally to enter to the Swagger UI. Swagger UI is a tool which allows to demonstrate possible API calls with their types:
 ```bash
 http://localhost:8080/docs
 ```
 ![app_docs](./images/app_docs.jpg)
 
-Swagger UI also allows to execute the required POST request with the example URL of test image
+Swagger UI also allows to execute the required POST request with the example URL of test image:
 ```bash
 http://localhost:8080/predict
 ```
