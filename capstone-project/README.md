@@ -2,12 +2,35 @@
 
 ## Problem description
 This project provides the ability to build and deploy Cancer prediction application related on Blood cell detection.
-Cancer prediction is based on classification of the Myeloblasts cells (AML indicators): high-level risk, 12-20 micrometers, round/oval, high nuclear-cytoplasm ratio, visible nucleoli and Erythroblast cells: middle-level risk with comparing of the rest classes of Normal cells: neutrophils, monocytes and basophils.
-In case of detection of the each class application can provide cancer predictions with related level of risk.
+
+Cancer (leukemia) prediction is based on classification of blood cells into three risk categories:
+
+High-risk indicators: Myeloblasts (AML indicators) - 12-20 micrometers, round/oval shape, high nuclear-cytoplasm ratio, visible nucleoli
+
+Middle-risk indicators: Segmented Neutrophils - morphological changes can indicate leukemic conditions
+
+Low-risk/normal cells: Basophils, Erythroblasts, Monocytes - their presence in normal ranges indicates lower risk
+
+In case of detection of the each class application can provide blood cancer predictions with related level of risk.
+
+Like an examples:
+If appliacation predicted that the image is Myeloblasts cell we have to alarm about high risk of blood cancer (leukemia).
+If appliacation predicted that the image is Segmented Neutrophils cell we have to warn about middle risk of blood cancer (leukemia).
+If appliacation predicted that the image is Basophils/Erythroblasts/Monocytes cell we have to inform about low risk of blood cancer (leukemia).
+
+Final result of working application can be viewed here:
+![final_testing](./images/final_testing.jpg)
+
 
 ### Dataset details
 
 The microscopic blood cell dataset for Cancer detection consists of high-resolution images essential for automated diagnostic systems. Each image captures detailed cellular morphology under standardized conditions, focusing on both normal and abnormal blood cells.
+
+Dataset can be mostly used for:
+- Learning
+- Building of application
+- Research
+- LLM Fine-Tuning
 
 ### License
 
@@ -141,7 +164,7 @@ split_cell_dataset(source_dir, target_dir, train_ratio=0.6, val_ratio=0.2, test_
 ```
 
 Dataset blood-cell-images-for-cancer-detection-prepared is uploaded to Capstone project repository: 
-[dataset](https://github.com/shall-it/machine-learning-zoomcamp/tree/main/capstone-project/blood-cell-images-for-cancer-detection-prepared)
+[prepared_dataset](https://github.com/shall-it/machine-learning-zoomcamp/tree/main/capstone-project/blood-cell-images-for-cancer-detection-prepared)
 
 It has unseen images in test part to perform external testing of application.
 
@@ -177,6 +200,8 @@ Its standardized format enables reliable machine learning model development for 
 
 
 ## Model training
+
+Pre-trained model MobileNetV2 was used initially with weights='IMAGENET1K_V1' and preprocessing.
 
 Tuning (adjusting) of the parameters to select the best values:
 
@@ -375,7 +400,7 @@ kubectl get services
 kubectl port-forward service/blood-classifier 30080:8080
 ```
 
-### Testing
+### Basic testing
 ```bash
 curl http://localhost:30080/health
 ```
@@ -383,3 +408,14 @@ curl http://localhost:30080/health
 
 In case of checking from /predict (initially from /docs) cancer prediction works correctly:
 ![predict_testing](./images/predict_testing.jpg)
+
+### Final testing of application with the test.py script
+
+[test.py](https://github.com/shall-it/machine-learning-zoomcamp/blob/main/capstone-project/test.py)
+
+![final_testing](./images/final_testing.jpg)
+
+### HPA and loading testing (optional)
+- [load_test.py](https://github.com/shall-it/machine-learning-zoomcamp/blob/main/capstone-project/load_test.py)
+- [hpa.yaml](https://github.com/shall-it/machine-learning-zoomcamp/blob/main/capstone-project/k8s/hpa.yaml)
+These files can be used like optional testing of high loading of application and demonstrating of work of Horizontal Pod Autoscaler
