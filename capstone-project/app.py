@@ -4,8 +4,6 @@ import numpy as np
 import onnxruntime as ort
 from keras_image_helper import create_preprocessor
 
-import pickle
-from typing import Literal
 from pydantic import BaseModel, Field
 
 from fastapi import FastAPI
