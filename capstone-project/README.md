@@ -14,11 +14,12 @@ Low-risk/normal cells: Basophils, Erythroblasts, Monocytes - their presence in n
 In case of detection of the each class application can provide blood cancer predictions with related level of risk.
 
 Like an examples:
-If appliacation predicted that the image is Myeloblasts cell we have to alarm about high risk of blood cancer (leukemia).
-If appliacation predicted that the image is Segmented Neutrophils cell we have to warn about middle risk of blood cancer (leukemia).
-If appliacation predicted that the image is Basophils/Erythroblasts/Monocytes cell we have to inform about low risk of blood cancer (leukemia).
+- If appliacation predicted that the image is Myeloblasts cell we have to alarm about high risk of blood cancer (leukemia).
+- If appliacation predicted that the image is Segmented Neutrophils cell we have to warn about middle risk of blood cancer (leukemia).
+- If appliacation predicted that the image is Basophils/Erythroblasts/Monocytes cell we have to inform about low risk of blood cancer (leukemia).
 
 Final result of working application can be viewed here:
+
 ![final_testing](./images/final_testing.jpg)
 
 
@@ -48,6 +49,36 @@ Dataset URL: https://www.kaggle.com/datasets/sumithsingh/blood-cell-images-for-c
 https://www.cancerimagingarchive.net/
 
 https://www.kaggle.com/code/youssefabdelghfar/blood-cell-cancer-using-cnn-and-efficientnetb3/input
+
+### Quality Measures
+- Expert hematopathologist validation
+- Standardized imaging conditions
+- Multiple samples per cell type
+- Detailed preparation documentation
+- Complete technical metadata
+
+### Clinical Applications
+- Normal vs. abnormal cell differentiation
+- Leukemia subtype identification
+- Disease progression monitoring
+- Early detection screening
+- Treatment response assessment
+
+### Image Annotations Include
+- Nuclear patterns and contours
+- Cytoplasmic features
+- Nucleoli presence
+- Cell measurements
+- Abnormal inclusions/Auer rods
+
+### Machine Learning Capabilities
+- Automated cell classification
+- Quantitative feature analysis
+- Differential counting
+- Morphological abnormality detection
+
+The dataset's structured organization and comprehensive documentation support both research initiatives and clinical applications in blood cancer diagnostics.
+Its standardized format enables reliable machine learning model development for automated leukemia detection systems.
 
 
 ## EDA
@@ -166,37 +197,7 @@ split_cell_dataset(source_dir, target_dir, train_ratio=0.6, val_ratio=0.2, test_
 Dataset blood-cell-images-for-cancer-detection-prepared is uploaded to Capstone project repository: 
 [prepared_dataset](https://github.com/shall-it/machine-learning-zoomcamp/tree/main/capstone-project/blood-cell-images-for-cancer-detection-prepared)
 
-It has unseen images in test part to perform external testing of application.
-
-### Quality Measures
-- Expert hematopathologist validation
-- Standardized imaging conditions
-- Multiple samples per cell type
-- Detailed preparation documentation
-- Complete technical metadata
-
-### Clinical Applications
-- Normal vs. abnormal cell differentiation
-- Leukemia subtype identification
-- Disease progression monitoring
-- Early detection screening
-- Treatment response assessment
-
-### Image Annotations Include
-- Nuclear patterns and contours
-- Cytoplasmic features
-- Nucleoli presence
-- Cell measurements
-- Abnormal inclusions/Auer rods
-
-### Machine Learning Capabilities
-- Automated cell classification
-- Quantitative feature analysis
-- Differential counting
-- Morphological abnormality detection
-
-The dataset's structured organization and comprehensive documentation support both research initiatives and clinical applications in blood cancer diagnostics.
-Its standardized format enables reliable machine learning model development for automated leukemia detection systems.
+It has unseen images in test part as well to perform external testing of application.
 
 
 ## Model training
@@ -418,4 +419,5 @@ In case of checking from /predict (initially from /docs) cancer prediction works
 ### HPA and loading testing (optional)
 - [load_test.py](https://github.com/shall-it/machine-learning-zoomcamp/blob/main/capstone-project/load_test.py)
 - [hpa.yaml](https://github.com/shall-it/machine-learning-zoomcamp/blob/main/capstone-project/k8s/hpa.yaml)
+
 These files can be used like optional testing of high loading of application and demonstrating of work of Horizontal Pod Autoscaler
