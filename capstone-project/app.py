@@ -67,7 +67,7 @@ def lambda_handler(event, context):
 
 
 class Request(BaseModel):
-    url: str = Field(..., example="https://raw.githubusercontent.com/shall-it/machine-learning-zoomcamp/main/capstone-project/images/MYO_0042.jpg")
+    url: str = Field(..., example="https://raw.githubusercontent.com/shall-it/machine-learning-zoomcamp/main/capstone-project/blood-cell-images-for-cancer-detection-prepared/test/myeloblast/MYO_0042.jpg")
 
 class PredictResponse(BaseModel):
     predictions: dict[str, float]

@@ -7,7 +7,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 url = 'http://localhost:30080/predict'
 
 request_data = {
-    "url": "https://raw.githubusercontent.com/shall-it/machine-learning-zoomcamp/main/capstone-project/images/MYO_0042.jpg"
+    "url": "https://raw.githubusercontent.com/shall-it/machine-learning-zoomcamp/main/capstone-project/blood-cell-images-for-cancer-detection-prepared/test/myeloblast/MYO_0042.jpg"
 }
 
 def send_request(_):

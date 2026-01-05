@@ -3,7 +3,7 @@
 ## Problem description
 This project provides the ability to build and deploy Cancer prediction application related on Blood cell detection.
 Cancer prediction is based on classification of the Myeloblasts cells (AML indicators): high-level risk, 12-20 micrometers, round/oval, high nuclear-cytoplasm ratio, visible nucleoli and Erythroblast cells: middle-level risk with comparing of the rest classes of Normal cells: neutrophils, monocytes and basophils.
-In case of detection
+In case of detection of the each class application can provide cancer predictions with related level of risk.
 
 ### Dataset details
 
@@ -62,6 +62,88 @@ Immature red blood cells with round nuclei. Their presence in peripheral blood c
 ### **Monocytes** (low-level risk)
 
 Large white blood cells with distinctive kidney-shaped nuclei. Abnormal counts and morphology can signal chronic myelomonocytic leukemia - their size and nuclear shape are key features.
+
+### Splitting of the original dataset to dataset with training, validation and test parts and saving of ratio for each class is provided by this Python script in notebook
+
+```python
+import os
+import shutil
+from sklearn.model_selection import train_test_split
+
+source_dir = 'blood-cell-images-for-cancer-detection'
+target_dir = 'blood-cell-images-for-cancer-detection-prepared'
+
+def split_cell_dataset(source_dir, target_dir, train_ratio=0.6, val_ratio=0.2, test_ratio=0.2, random_state=42):
+    """
+    Split image dataset into train, validation and test sets with class preservation.
+
+    Args:
+        source_dir: Directory with class subdirectories
+        target_dir: Directory where split datasets will be created
+        train_ratio: Proportion for training set
+        val_ratio: Proportion for validation set
+        test_ratio: Proportion for test set
+        random_state: Random seed for reproducibility
+    """
+
+    # Create target directory structure
+    os.makedirs(target_dir, exist_ok=True)
+
+    # Get list of class directories
+    class_names = [d for d in os.listdir(source_dir)
+                   if os.path.isdir(os.path.join(source_dir, d))]
+
+    # Create split directories for each class
+    for split in ['train', 'val', 'test']:
+        for class_name in class_names:
+            os.makedirs(os.path.join(target_dir, split, class_name), exist_ok=True)
+
+    # Process each class
+    for class_name in class_names:
+        class_path = os.path.join(source_dir, class_name)
+        images = os.listdir(class_path)
+
+        # First split: train+val vs test
+        train_val, test = train_test_split(
+            images,
+            test_size=test_ratio,
+            random_state=random_state,
+            shuffle=True
+        )
+
+        # Second split: train vs val
+        val_relative_ratio = val_ratio / (train_ratio + val_ratio)
+        train, val = train_test_split(
+            train_val,
+            test_size=val_relative_ratio,
+            random_state=random_state,
+            shuffle=True
+        )
+
+        # Copy files to split directories
+        for img in train:
+            src = os.path.join(class_path, img)
+            dst = os.path.join(target_dir, 'train', class_name, img)
+            shutil.copy(src, dst)
+
+        for img in val:
+            src = os.path.join(class_path, img)
+            dst = os.path.join(target_dir, 'val', class_name, img)
+            shutil.copy(src, dst)
+
+        for img in test:
+            src = os.path.join(class_path, img)
+            dst = os.path.join(target_dir, 'test', class_name, img)
+            shutil.copy(src, dst)
+
+
+split_cell_dataset(source_dir, target_dir, train_ratio=0.6, val_ratio=0.2, test_ratio=0.2, random_state=42)
+```
+
+Dataset blood-cell-images-for-cancer-detection-prepared is uploaded to Capstone project repository: 
+[dataset](https://github.com/shall-it/machine-learning-zoomcamp/tree/main/capstone-project/blood-cell-images-for-cancer-detection-prepared)
+
+It has unseen images in test part to perform external testing of application.
 
 ### Quality Measures
 - Expert hematopathologist validation
