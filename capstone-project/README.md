@@ -43,15 +43,24 @@ The main features of dataset are clean data and well documentation.
 
 This dataset consists of 5000 images (.jpg) where the distribution is 1000 per class:
 
-- Myeloblasts (high-level risk)
+### **Myeloblasts** (high-level risk)
+
 Immature white blood cells that normally develop into granulocytes. High counts often indicate acute myeloid leukemia - their appearance as large cells with round/oval nuclei and fine chromatin is crucial for model training.
-- Segmented Neutrophils (middle-level risk)
+
+### **Segmented Neutrophils** (middle-level risk)
+
 Mature white blood cells with multi-lobed nuclei. Changes in their morphology or count can indicate leukemic conditions - the segmented nuclear pattern is a critical training feature.
-- Basophils (low-level risk)
+
+### **Basophils** (low-level risk)
+
 Granulocytes with dark-staining granules that often obscure the nucleus. Elevated counts may suggest chronic myeloid leukemia - their distinctive granular appearance is an important training characteristic.
-- Erythroblasts (low-level risk)
+
+### **Erythroblasts** (low-level risk)
+
 Immature red blood cells with round nuclei. Their presence in peripheral blood can indicate various blood disorders - the model needs to detect their circular shape and dense nuclear chromatin.
-- Monocytes (low-level risk)
+
+### **Monocytes** (low-level risk)
+
 Large white blood cells with distinctive kidney-shaped nuclei. Abnormal counts and morphology can signal chronic myelomonocytic leukemia - their size and nuclear shape are key features.
 
 ### Quality Measures
@@ -184,6 +193,7 @@ Check the Docker image is successfully builded:
 docker images
 ```
 The output should look like:
+
 ![docker_images](./images/docker_images.jpg)
 
 Start Docker container to test application functionality:
