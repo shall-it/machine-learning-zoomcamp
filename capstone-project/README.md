@@ -204,6 +204,10 @@ It has unseen images in test part as well to perform external testing of applica
 
 Pre-trained model MobileNetV2 was used initially with weights='IMAGENET1K_V1' and preprocessing.
 
+### Model has pretty high validation accuracy without extra inner layer, even more than with inner layer (checked below)
+
+![without_inner_layer](./images/without_inner_layer.jpg)
+
 Tuning (adjusting) of the parameters to select the best values:
 
 ### Tuning of learning_rate parameter:
@@ -219,9 +223,9 @@ Tuning (adjusting) of the parameters to select the best values:
 ![droprate](./images/droprate.jpg)
 
 ### Tuned parameters with the best values
-learning_rate = 0.001
-size_inner = 100
-droprate = 0.5
+- learning_rate = 0.001
+- size_inner = 100
+- droprate = 0.5
 
 ### Final model training with the best parameters:
 
