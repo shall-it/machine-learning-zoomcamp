@@ -95,27 +95,30 @@ The dataset merges high-quality blood cell images from The Cancer Imaging Archiv
 
 The main features of dataset are clean data and well documentation.
 
-This dataset consists of 5000 images (.jpg) where the distribution is 1000 per class:
+This dataset consists of 5000 images (.jpg) where the distribution is 1000 per class.
 
-### **Myeloblasts** (high-level risk)
+I investigated the classes presented into dataset with AI tools like ChatGPT, Claude to compare with official medical data (WHO / ICC / NCCN / UpToDate) and between each other.
+Then I could marked them regarding to leukemia (blood cancer) risk levels. I will use risk level mapping later during testing the results of cancer prediction.
+
+### **Myeloblasts** - high-level risk
 
 Immature white blood cells that normally develop into granulocytes. High counts often indicate acute myeloid leukemia - their appearance as large cells with round/oval nuclei and fine chromatin is crucial for model training.
 
-### **Segmented Neutrophils** (middle-level risk)
-
-Mature white blood cells with multi-lobed nuclei. Changes in their morphology or count can indicate leukemic conditions - the segmented nuclear pattern is a critical training feature.
-
-### **Basophils** (low-level risk)
-
-Granulocytes with dark-staining granules that often obscure the nucleus. Elevated counts may suggest chronic myeloid leukemia - their distinctive granular appearance is an important training characteristic.
-
-### **Erythroblasts** (low-level risk)
+### **Erythroblasts** - high-level risk
 
 Immature red blood cells with round nuclei. Their presence in peripheral blood can indicate various blood disorders - the model needs to detect their circular shape and dense nuclear chromatin.
 
-### **Monocytes** (low-level risk)
+### **Basophils** - middle-level risk
+
+Granulocytes with dark-staining granules that often obscure the nucleus. Elevated counts may suggest chronic myeloid leukemia - their distinctive granular appearance is an important training characteristic.
+
+### **Monocytes** - middle-level risk
 
 Large white blood cells with distinctive kidney-shaped nuclei. Abnormal counts and morphology can signal chronic myelomonocytic leukemia - their size and nuclear shape are key features.
+
+### **Segmented Neutrophils** - low-level risk
+
+Mature white blood cells with multi-lobed nuclei. Changes in their morphology or count can indicate leukemic conditions - the segmented nuclear pattern is a critical training feature.
 
 ### Splitting of the original dataset to dataset with training, validation and test parts and saving of ratio for each class is provided by this Python script in notebook
 

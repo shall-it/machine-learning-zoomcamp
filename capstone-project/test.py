@@ -4,8 +4,8 @@ url = 'http://localhost:30080/predict'
 
 test_urls = [
     "https://raw.githubusercontent.com/shall-it/machine-learning-zoomcamp/main/capstone-project/blood-cell-images-for-cancer-detection-prepared/test/myeloblast/MYO_1212.jpg",
-    "https://raw.githubusercontent.com/shall-it/machine-learning-zoomcamp/main/capstone-project/blood-cell-images-for-cancer-detection-prepared/test/seg_neutrophil/NGS_1600.jpg",
-    "https://raw.githubusercontent.com/shall-it/machine-learning-zoomcamp/main/capstone-project/blood-cell-images-for-cancer-detection-prepared/test/basophil/BA_260100.jpg"
+    "https://raw.githubusercontent.com/shall-it/machine-learning-zoomcamp/main/capstone-project/blood-cell-images-for-cancer-detection-prepared/test/basophil/BA_275300.jpg",
+    "https://raw.githubusercontent.com/shall-it/machine-learning-zoomcamp/main/capstone-project/blood-cell-images-for-cancer-detection-prepared/test/seg_neutrophil/NGS_4664.jpg",
 ]
 
 
@@ -13,10 +13,10 @@ def get_risk_level(top_class):
     """Define risk level based on the predicted class"""
     risk_mapping = {
         'myeloblast': '🔴 HIGH RISK OF LEUKEMIA',
-        'seg_neutrophil': '🟡 MIDDLE RISK OF LEUKEMIA', 
-        'basophil': '🟢 LOW RISK OF LEUKEMIA',
-        'erythroblast': '🟢 LOW RISK OF LEUKEMIA',
-        'monocyte': '🟢 LOW RISK OF LEUKEMIA'
+        'erythroblast': '🔴 HIGH RISK OF LEUKEMIA',
+        'basophil': '🟡 MIDDLE RISK OF LEUKEMIA',
+        'monocyte': '🟡 MIDDLE RISK OF LEUKEMIA',
+        'seg_neutrophil': '🟢 LOW RISK OF LEUKEMIA'
     }
     return risk_mapping.get(top_class, 'Unknown risk')
 
