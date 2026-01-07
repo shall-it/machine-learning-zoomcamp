@@ -283,7 +283,8 @@ python -m pip install onnx onnxscript
 ```
 
 ### Use convert.py script to convert the trained model from PyTorch format to ONNX one locally with Python:
-**Important note!** Setup path like the name of trained model with the highest validation accuracy
+**Important note!** Setup path like the name of trained PyTorch model with the highest validation accuracy
+
 [convert.py](https://github.com/shall-it/machine-learning-zoomcamp/blob/main/capstone-project/scripts/convert.py)
 
 ![script_converting](./images/script_converting.jpg)
@@ -293,6 +294,7 @@ python -m pip install onnx onnxscript
 ## Reproducibility
 
 Google Colab was used initially to train the model and tune the parameters. Jupyter notebook script was running several times like it was presented on screenshots above so notebook is quite stable and working well without any issues and errors:
+
 [capstone_project.ipynb](https://github.com/shall-it/machine-learning-zoomcamp/blob/main/capstone-project/capstone_project.ipynb)
 
 Local Python scripts were running several times to train model and convert it to universal ONNX format as well without any issues and errors:
@@ -305,7 +307,9 @@ Local Python scripts were running several times to train model and convert it to
 ### The resulting model had PyTorch format so was converted to universal ONNX format for convenience and easy deployment:
 ![onnx_conversion](./images/onnx_conversion.jpg)
 
-Model is deployed with modern and powerful FastAPI framework since it's used and demonstrated into app.py script: [app.py](https://github.com/shall-it/machine-learning-zoomcamp/blob/main/capstone-project/app.py)
+Model is deployed with modern and powerful FastAPI framework since it's used and demonstrated into app.py script:
+
+[app.py](https://github.com/shall-it/machine-learning-zoomcamp/blob/main/capstone-project/app.py)
 
 
 ## Dependency and environment management
