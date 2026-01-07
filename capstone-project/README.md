@@ -271,7 +271,8 @@ curl -L -o blood-cell-images-for-cancer-detection.zip\
 unzip blood-cell-images-for-cancer-detection.zip -d "blood-cell-images-for-cancer-detection"
 ```
 
-### Use train.py script to train model locally with Python:
+### Use train.py script to train model locally with Python
+Logic of the model training was moved into this script:
 [train.py](https://github.com/shall-it/machine-learning-zoomcamp/blob/main/capstone-project/scripts/train.py)
 
 ![script_training](./images/script_training.jpg)
@@ -282,8 +283,9 @@ unzip blood-cell-images-for-cancer-detection.zip -d "blood-cell-images-for-cance
 python -m pip install onnx onnxscript
 ```
 
-### Use convert.py script to convert the trained model from PyTorch format to ONNX one locally with Python:
-**Important note!** Setup path like the name of trained PyTorch model with the highest validation accuracy
+### Use convert.py script to convert the trained model from PyTorch format to ONNX one locally with Python
+Logic of the model conversion to the universal format was moved into this script:
+**Important note!** Setup path variable like the name of trained PyTorch model with the highest validation accuracy
 
 [convert.py](https://github.com/shall-it/machine-learning-zoomcamp/blob/main/capstone-project/scripts/convert.py)
 
@@ -301,6 +303,7 @@ Local Python scripts were running several times to train model and convert it to
 - [train.py](https://github.com/shall-it/machine-learning-zoomcamp/blob/main/capstone-project/scripts/train.py)
 - [convert.py](https://github.com/shall-it/machine-learning-zoomcamp/blob/main/capstone-project/scripts/convert.py)
 
+Full information about dataset, its usage and preparation was provided into Problem description and EDA sections above.
 
 ## Model deployment
 
