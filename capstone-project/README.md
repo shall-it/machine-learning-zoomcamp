@@ -46,6 +46,17 @@ Dataset is created by author Sumith Singh Kothwal.
 
 Dataset URL: https://www.kaggle.com/datasets/sumithsingh/blood-cell-images-for-cancer-detection
 
+### Dataset usage
+
+Dataset is free and accessible via Kaggle:
+
+```bash
+!curl -L -o blood-cell-images-for-cancer-detection.zip\
+  https://www.kaggle.com/api/v1/datasets/download/sumithsingh/blood-cell-images-for-cancer-detection
+
+!unzip blood-cell-images-for-cancer-detection.zip -d "blood-cell-images-for-cancer-detection"
+```
+
 **Sources**:
 
 https://www.cancerimagingarchive.net/
@@ -244,20 +255,49 @@ Validation accuracy for the trained model reached with tuning of parameters and 
 
 ![test_image](./images/test_image.jpg)
 
-## Reproducibility
 
-Google Colab was used to train the model and tune the parameters. Script was up and running several times like it was presented on screenshots above so notebook is quite stable and working really well without any errors and exceptions.
+## Exporting notebook to script
 
-### Dataset usage
-
-Dataset is free and accessible via Kaggle:
-
+### Move to the root point of Capstone project directory then enter to scripts directory:
 ```bash
-!curl -L -o blood-cell-images-for-cancer-detection.zip\
+cd /path/to/root/capstone-project/scripts # path is just for example
+```
+
+### Execute these commands to get original dataset locally (for Linux/WSL Ubuntu):
+```bash
+curl -L -o blood-cell-images-for-cancer-detection.zip\
   https://www.kaggle.com/api/v1/datasets/download/sumithsingh/blood-cell-images-for-cancer-detection
 
-!unzip blood-cell-images-for-cancer-detection.zip -d "blood-cell-images-for-cancer-detection"
+unzip blood-cell-images-for-cancer-detection.zip -d "blood-cell-images-for-cancer-detection"
 ```
+
+### Use train.py script to train model locally with Python:
+[train.py](https://github.com/shall-it/machine-learning-zoomcamp/blob/main/capstone-project/scripts/train.py)
+
+![script_training](./images/script_training.jpg)
+
+
+### Execute this pip command to have the ability to convert the trained model from PyTorch format to ONNX one:
+```bash
+python -m pip install onnx onnxscript
+```
+
+### Use convert.py script to convert the trained model from PyTorch format to ONNX one locally with Python:
+**Important note!** Setup path like the name of trained model with the highest validation accuracy
+[convert.py](https://github.com/shall-it/machine-learning-zoomcamp/blob/main/capstone-project/scripts/convert.py)
+
+![script_converting](./images/script_converting.jpg)
+
+### Behavior and resulting artifacts for both Python scripts are expected and correct like it's demonstrated above
+
+## Reproducibility
+
+Google Colab was used initially to train the model and tune the parameters. Jupyter notebook script was running several times like it was presented on screenshots above so notebook is quite stable and working well without any issues and errors:
+[capstone_project.ipynb](https://github.com/shall-it/machine-learning-zoomcamp/blob/main/capstone-project/capstone_project.ipynb)
+
+Local Python scripts were running several times to train model and convert it to universal ONNX format as well without any issues and errors:
+- [train.py](https://github.com/shall-it/machine-learning-zoomcamp/blob/main/capstone-project/scripts/train.py)
+- [convert.py](https://github.com/shall-it/machine-learning-zoomcamp/blob/main/capstone-project/scripts/convert.py)
 
 
 ## Model deployment
