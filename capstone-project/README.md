@@ -1,22 +1,24 @@
 # Capstone Project - Blood cell detection for Cancer prediction
 
 ## Problem description
-This project provides the ability to build and deploy Cancer prediction application related on Blood cell detection.
+This project provides the ability to build and deploy Cancer prediction application related on Blood cell detection with the high accuracy.
 
 Cancer (leukemia) prediction is based on classification of blood cells into three risk categories:
 
-High-risk indicators: Myeloblasts (AML indicators) - 12-20 micrometers, round/oval shape, high nuclear-cytoplasm ratio, visible nucleoli
+High-risk indicators:
+- Myeloblasts (AML indicators) - 12-20 micrometers, round/oval shape, high nuclear-cytoplasm ratio, visible nucleoli
+- Erythroblasts
 
-Middle-risk indicators: Segmented Neutrophils - morphological changes can indicate leukemic conditions
+Middle-risk indicators: Basophils, Monocytes - their presence in large ranges indicates middle risk
 
-Low-risk/normal cells: Basophils, Erythroblasts, Monocytes - their presence in normal ranges indicates lower risk
+Low-risk indicators: Segmented Neutrophils - normal cells
 
 In case of detection of the each class application can provide blood cancer predictions with related level of risk.
 
 Like an examples:
-- If appliacation predicted that the image is Myeloblasts cell we have to alarm about high risk of blood cancer (leukemia).
-- If appliacation predicted that the image is Segmented Neutrophils cell we have to warn about middle risk of blood cancer (leukemia).
-- If appliacation predicted that the image is Basophils/Erythroblasts/Monocytes cell we have to inform about low risk of blood cancer (leukemia).
+- If appliacation predicted that the image is Myeloblasts/Erythroblasts cell it has to alarm about high risk of blood cancer (leukemia).
+- If appliacation predicted that the image is Basophils//Monocytes cell it has to warn about middle risk of blood cancer (leukemia), it depends on amount of such cells.
+- If appliacation predicted that the image is Segmented Neutrophils cell it has to inform about low risk of blood cancer (leukemia).
 
 Final result of working application can be viewed here:
 
@@ -388,8 +390,11 @@ kind load docker-image cancer-predictor:latest --name capstone
 ![kind_load](./images/kind_load.jpg)
 
 ### Move to the root point of Capstone project directory
+```bash
+cd /path/to/root/capstone-project # path is just for example
+```
 
-### Applying of deployment
+### Applying of Kubernetes deployment
 ```bash
 kubectl apply -f k8s/deployment.yaml
 
@@ -397,7 +402,7 @@ kubectl get deployments
 ```
 ![get_deployments](./images/get_deployments.jpg)
 
-### Applying of service
+### Applying of Kubernetes service
 ```bash
 kubectl apply -f k8s/service.yaml
 
@@ -405,12 +410,12 @@ kubectl get services
 ```
 ![get_services](./images/get_services.jpg)
 
-### Using of port forwarding
+### Using of port forwarding for service
 ```bash
 kubectl port-forward service/blood-classifier 30080:8080
 ```
 
-### Basic testing
+### Basic testing of Kubernetes application
 ```bash
 curl http://localhost:30080/health
 ```
@@ -425,8 +430,19 @@ In case of checking from /predict (initially from /docs) cancer prediction works
 
 ![final_testing](./images/final_testing.jpg)
 
+Classes are identified quite correctly for images from test part of dataset which weren't involved into training and validation processes.
+Risk level notifications were provided in accordance of belonging to a certain class to get the basic medical interpretation.
+
 ### HPA and loading testing (optional)
+These files can be used like optional testing of high loading of application and demonstrating of work of Horizontal Pod Autoscaler
 - [load_test.py](https://github.com/shall-it/machine-learning-zoomcamp/blob/main/capstone-project/load_test.py)
 - [hpa.yaml](https://github.com/shall-it/machine-learning-zoomcamp/blob/main/capstone-project/k8s/hpa.yaml)
 
-These files can be used like optional testing of high loading of application and demonstrating of work of Horizontal Pod Autoscaler
+### Cleanup of Kubernetes environment
+
+```bash
+kubectl delete -f k8s/deployment.yaml
+kubectl delete -f k8s/service.yaml
+
+kind delete cluster --name capstone
+```
