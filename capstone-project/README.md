@@ -99,8 +99,8 @@ The main features of dataset are clean data and well documentation.
 
 This dataset consists of 5000 images (.jpg) where the distribution is 1000 per class.
 
-I investigated the classes presented into dataset with AI tools like ChatGPT, Claude to compare with official medical data (WHO / ICC / NCCN / UpToDate) and between each other.
-Then I could marked them regarding to leukemia (blood cancer) risk levels. I will use risk level mapping later during testing the results of cancer prediction.
+The 5 classes presented into dataset were investigated with AI tools like ChatGPT, Claude to compare with official medical data (WHO / ICC / NCCN / UpToDate) and between each other.
+Then each class was marked regarding to leukemia (blood cancer) risk levels. Risk level mapping will be used later during testing the results of cancer prediction.
 
 ### **Myeloblasts** - high-level risk
 
